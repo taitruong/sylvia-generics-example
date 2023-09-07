@@ -10,7 +10,7 @@ use crate::{
 };
 
 #[contract(module=crate::contract)]
-#[messages(crate::my_interface as MyInterface)]
+#[messages(crate::my_interface: exec<String>, query<String> as MyInterface)]
 impl MyInterface for MyContract<'_> {
     type Error = ContractError;
 

@@ -5,12 +5,12 @@ use sylvia::{
 };
 
 #[interface]
-pub trait MyInterface {
+pub trait MyInterface<T> {
     type Error: From<StdError>;
 
     #[msg(exec)]
-    fn save_data(&self, ctx: ExecCtx, data: String) -> StdResult<Response>;
+    fn save_data(&self, ctx: ExecCtx, data: T) -> StdResult<Response>;
 
     #[msg(query)]
-    fn get_data(&self, ctx: QueryCtx) -> StdResult<String>;
+    fn get_data(&self, ctx: QueryCtx) -> StdResult<T>;
 }
